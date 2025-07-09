@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css"/>
+    <style>
+        #mapid {
+            height: 100vh;
+            width: 100%;
+        }
+
+        .custom-popup {
+            text-align: left;
+        }
+
+        .custom-popup .leaflet-popup-content-wrapper {
+            background: lightgreen;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="mapid"></div>
+    <script>
+        const map = L.map('mapid').setView([51.7, -0.9], 6.5);
+
+        L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoibmpvc2VmYmVjayIsImEiOiJjaXhraHB6cngwMDQyMnducW40Mjlyd3JpIn0.LjLaMEgTMBeTnHRbHotKOA', {
+            attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://mapbox.com">Mapbox</a>',
+            id: 'your.mapbox.project.id',
+            accessToken: 'pk.eyJ1Ijoibmpvc2VmYmVjayIsImEiOiJjaXhraHB6cngwMDQyMnducW40Mjlyd3JpIn0.LjLaMEgTMBeTnHRbHotKOA'
+        }).addTo(map);
+
+        const marker1 = L.marker([51.5, -0.09]).addTo(map);
+        const marker2 = L.marker([52.5, -0.09]).addTo(map);
+
+        const popup1 = L.popup({
+            className: 'custom-popup'
+        }).setContent('<p>Hello I am a popup I can style this text <br>however I want!</p>');
+
+        marker1.bindPopup(popup1).openPopup();
+        marker2.bindPopup('I am another popup!');
+    </script>
+</body>
+
+</html>
