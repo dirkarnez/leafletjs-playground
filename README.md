@@ -4,6 +4,30 @@
 - [Leaflet Playground](https://codepen.io/njosefbeck/pen/EZaEbj)
 - [Leaflet on Mobile](https://leafletjs.com/examples/mobile)
 
+### TODOs
+- precache (PWA)
+  - ```js
+    // 在 service-worker.js 中
+    import { precacheAndRoute } from 'workbox-precaching';
+    import { registerRoute } from 'workbox-routing';
+    import { StaleWhileRevalidate, CacheFirst } from 'workbox-strategies';
+    
+    // 1. 預快取應用程式框架 (HTML, CSS, JS)
+    precacheAndRoute(self.__WB_MANIFEST);
+    
+    // 2. 快取 OpenStreetMap 圖磚 (動態 Runtime 策略)
+    registerRoute(
+      ({ url }) => url.origin === 'https://tile.openstreetmap.org',
+      new StaleWhileRevalidate({
+        cacheName: 'osm-tiles',
+        plugins: [
+          {
+            cacheableResponse: { statuses: [0, 200] }
+          }
+        ]
+      })
+    );
+    ```
 ### Data sources
 - [Home | DATA.GOV.HK](https://data.gov.hk/en/)
 - [Home - LANDSD MAP API PORTAL for Government Bureaux / Departments](https://api.portal.hkmapservice.gov.hk/)
