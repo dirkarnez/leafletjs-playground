@@ -5,7 +5,9 @@
 - [Leaflet on Mobile](https://leafletjs.com/examples/mobile)
 
 ### TODOs
-- precache (PWA)
+- [ ] GPS web api
+- [ ] precache (PWA)
+  - https://github.com/reyemtm/pwa-maps
   - ```js
     // 在 service-worker.js 中
     import { precacheAndRoute } from 'workbox-precaching';
@@ -28,6 +30,9 @@
       })
     );
     ```
+- [ ] Offline routers
+  - https://wiki.openstreetmap.org/wiki/Routing
+  - https://wiki.openstreetmap.org/wiki/Routing/offline_routers
 ### Data sources
 - [Home | DATA.GOV.HK](https://data.gov.hk/en/)
 - [Home - LANDSD MAP API PORTAL for Government Bureaux / Departments](https://api.portal.hkmapservice.gov.hk/)
